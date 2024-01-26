@@ -9,6 +9,7 @@
 
 :root{
     --primary-color: 200, 100%, 25%;
+    --secondary-color: 0, 2%, 78%;
 }
 
 .master-container{
@@ -22,12 +23,12 @@
 }
 
 .login-container{
-    background-color: hsl(var(--primary-color), .4);
+    background-color: hsl(var(--primary-color), .7);
     width: 75%;
     max-width: 600px;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 0 15px 0 hsl(var(--primary-color), .4);
+    box-shadow: 0 0 15px 0 hsl(var(--primary-color));
 }
 
 .login-container > h1{
@@ -53,15 +54,51 @@
 .input-set > input{
     height: 2rem;
     border-radius: 7px;
-    background-color: rgba(4, 1, 12, .6);
+    background-color: hsl(var(--secondary-color),.8);
     color: white;
+    padding: 20px;
+    border: none;
+    outline: none;
 }
 
 .form button{
-    height: 2rem;
     color: white;
     font-size: 1.1rem;
-    background-color: brown;
+    background-color: hsl(var(--primary-color),.75);
     border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+}
 
+.input-set .message{
+    display: none;
+}
+
+.input-set.success .message,.input-set.error .message{
+    display: block;
+}
+
+.input-set.success .message{
+    color: rgb(99, 218, 99);
+}
+
+.input-set.error .message{
+    color: rgb(134, 22, 22);
+}
+
+.input-set.success input{
+    box-shadow: 0 0 0 1px rgb(99, 218, 99);
+}
+
+.input-set.error input{
+    box-shadow: 0 0 0 1px rgb(134, 22, 22);
+}
+
+.input-set input:focus{
+    box-shadow: 0 0 0 1px rgb(67, 67, 219);
+}
+
+.form button:hover{
+    background-color: hsl(var(--primary-color),.95);
+    cursor: pointer;
 }
