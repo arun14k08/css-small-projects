@@ -1,0 +1,142 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    transform-style: preserve-3d;
+}
+
+:root {
+    --background: #777;
+    --hex-primary: rgba(0, 0, 0, .3);
+    --hex-half-width: 52px;
+    --hex-triangle-height: 30px;
+    --hex-full-width: 104px;
+    --hex-box-height: 60px;
+    --hex-thickness: 12px;
+    --right-angle: 90deg;
+    --inclination: 29.6deg;
+    --test-color: rgba(0,0,0,.7);
+}
+
+body {
+    background-color: var(--background);
+}
+
+.hex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.hexagon::after, .hexagon > .back-face::after {
+    content: " ";
+    position: absolute;
+    width: 0;
+    border-bottom: var(--hex-triangle-height) solid var(--hex-primary);
+    border-left: var(--hex-half-width) solid transparent;
+    border-right: var(--hex-half-width) solid transparent;
+    bottom: var(--hex-box-height);
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1));
+}
+
+.hexagon, .hexagon .back-face {
+    position: relative;
+    margin-top: var(--hex-triangle-height);
+    width: var(--hex-full-width);
+    height: var(--hex-box-height);
+    background-color: var(--hex-primary);
+    animation: rotate 5000ms ease-in-out infinite both;
+    margin-left: 50px;
+}
+
+.hexagon::before, .hexagon .back-face::before {
+    content: "";
+    width: 0;
+    position: absolute;
+    top: var(--hex-box-height);
+    border-top: var(--hex-triangle-height) solid var(--hex-primary);
+    border-left: var(--hex-half-width) solid transparent;
+    border-right: var(--hex-half-width) solid transparent;
+}
+
+.hexagon .back-face{
+    margin-left: 0;
+    margin-top: 0;
+    transform: translateZ(calc(var(--hex-thickness) * -1));
+    animation: reverse;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+.hexagon:hover {
+    transform: rotateY(135deg);
+}
+
+.box {
+    position: absolute;
+    width: var(--hex-thickness);
+    height: var(--hex-box-height);
+    background-color: var(--test-color);
+}
+
+.side-1 {
+    transform-origin: left;
+    transform: rotateY(var(--right-angle));
+}
+
+.side-2 {
+    right: 0;
+    transform-origin: right;
+    transform: rotateY(calc(-1 * var(--right-angle)));
+}
+
+.top,
+.bottom {
+    position: absolute;
+    width: var(--hex-box-height);
+    height: var(--hex-thickness);
+    background-color: var(--test-color);
+    z-index: 1;
+}
+
+.top.left {
+    transform-origin: top left;
+    transform: rotateZ(calc(var(--inclination) * -1))
+        rotateX(calc(-1 * var(--right-angle)));
+}
+
+.top.right {
+    right: 0;
+    transform-origin: top right;
+    transform: rotateZ(var(--inclination))
+        rotateX(calc(-1 * var(--right-angle)));
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.bottom.left {
+    transform-origin: bottom left;
+    transform: rotateZ(calc(var(--inclination)))
+        rotateX(calc(var(--right-angle)));
+}
+
+.bottom.right {
+    right: 0;
+    transform-origin: bottom right;
+    transform: rotateZ(calc(var(--inclination) * -1))
+        rotateX(calc(var(--right-angle)));
+}
+
+.hexagon .back-face{
+
+}
