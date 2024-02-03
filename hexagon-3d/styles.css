@@ -34,7 +34,7 @@ body {
     flex-wrap: wrap;
     /* transform: rotateY(45deg); */
     /* background-color: rgba(0, 0, 0, 0.7); */
-    
+    transform: rotateX(45deg) rotateZ(-45deg);
 }
 
 .hexagon::after,
@@ -56,7 +56,7 @@ body {
     height: var(--hex-box-height);
     background-color: var(--hex-primary);
     margin-left: var(--gap-horizontal);
-    transition: transform 500ms ease-in-out;
+    transition: transform 100ms ease-in-out;
 }
 
 .hexagon::before,
@@ -91,7 +91,7 @@ body {
 
 
 .hexagon:hover {
-    transform: rotateY(135deg);
+    transform: rotateY(15deg);
 }
 
 .box {
