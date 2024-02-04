@@ -8,7 +8,7 @@
 
 :root {
     --background: #333;
-    --hex-primary:  #ff9a00;
+    --hex-primary:  #ffffff;
     --hex-secondary: #ffea1e;
     --hex-half-width: 104px;
     --hex-triangle-height: 60px;
@@ -17,7 +17,7 @@
     --hex-thickness: 24px;
     --right-angle: 90deg;
     --inclination: 29.6deg;
-    --test-color: #ffea1e;
+    --test-color: #b0b0b0;
     --gap-horizontal: 40px;
     --gap-vertical: -15px;
 }
@@ -25,15 +25,20 @@
 body {
     height: 100vh;
     background-color: var(--background);
+    background-image: url(./assets/wood.jpg);
+    background-size: cover;
+    background-position: center;
+    overflow-x: hidden;
 }
 
 .hex-container {
+    position: fixed;
     display: flex;
     width: fit-content;
     flex-direction: row;
     flex-wrap: wrap;
-    /* transform: rotateY(45deg); */
-    /* background-color: rgba(0, 0, 0, 0.7); */
+    top: 1000px;
+    left: -300px;
     transform: rotateX(45deg) rotateZ(-45deg);
 }
 
@@ -56,7 +61,7 @@ body {
     height: var(--hex-box-height);
     background-color: var(--hex-primary);
     margin-left: var(--gap-horizontal);
-    transition: transform 100ms ease-in-out;
+    transition: transform 1500ms ease-in-out
 }
 
 .hexagon::before,
@@ -75,23 +80,6 @@ body {
     margin-top: 0;
     transform: translateZ(calc(var(--hex-thickness) * -1));
     animation: reverse;
-}
-
-@keyframes rotate-face {
-    0% {
-        transform: rotateY(0deg) translateY(0px);
-    }
-    50%{
-        transform: rotateY(180deg)translateY(50px);
-    }
-    100% {
-        transform: rotateY(360deg) translateY(0px);
-    }
-}
-
-
-.hexagon:hover {
-    transform: rotateY(15deg);
 }
 
 .box {
@@ -167,4 +155,59 @@ body {
 .hexagon-even-row {
     margin-left: calc(var(--hex-half-width) + (var(--gap-horizontal) / 2));
     margin-top: var(--gap-vertical);
+}
+
+.fixed{
+    position: fixed;
+    transform-style: preserve-3d;
+    top: 10px;
+    animation: rotate-face 5000ms ease-in-out infinite forwards;
+}
+
+.top.left{
+    background-color: red;
+}
+.top.right{
+    background-color: green;
+}
+.side-1{
+    background-color: blue;
+}
+.side-2{
+    background-color: blue;
+}
+
+.bottom.left{
+    background-color: red;
+}
+
+.bottom.right{
+    background-color: green;
+}
+
+.hex-container-fixed{
+    position: fixed;
+    top: 10px;
+    left: 500px;
+}
+
+.hexagon:hover{
+    transform: rotateY(360deg);
+}
+
+/*animations */
+@keyframes rotate-face {
+    0%{
+        transform: rotateY(0deg) rotateZ(0deg);
+    }
+    25%{
+        transform: rotateY(90deg) rotateZ(90deg);
+    }
+    75%{
+        transform: rotateY(90deg) rotateZ(180deg);
+
+    }
+    100%{
+        transform: rotateY(180deg) rotateZ(360deg);
+    }
 }
