@@ -45,7 +45,7 @@ body {
     border-bottom: var(--hex-triangle-height) solid var(--hex-primary);
     border-left: var(--hex-half-width) solid transparent;
     border-right: var(--hex-half-width) solid transparent;
-    bottom: var(--hex-box-height);
+    bottom: calc(var(--hex-box-height) - 1px);
 }
 
 .hexagon,
