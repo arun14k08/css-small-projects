@@ -8,7 +8,7 @@
 
 :root {
     --background: #333;
-    --hex-primary:  #ffffff;
+    --hex-primary: #ffffff;
     --hex-secondary: #ffea1e;
     --hex-half-width: 104px;
     --hex-triangle-height: 60px;
@@ -23,6 +23,7 @@
 }
 
 body {
+    width: 100%;
     height: 100vh;
     background-color: var(--background);
     background-image: url(./assets/wood.jpg);
@@ -61,7 +62,7 @@ body {
     height: var(--hex-box-height);
     background-color: var(--hex-primary);
     margin-left: var(--gap-horizontal);
-    transition: transform 1500ms ease-in-out
+    transition: transform 1500ms ease-in-out;
 }
 
 .hexagon::before,
@@ -157,57 +158,53 @@ body {
     margin-top: var(--gap-vertical);
 }
 
-.fixed{
+.fixed {
     position: fixed;
     transform-style: preserve-3d;
     top: 10px;
     animation: rotate-face 5000ms ease-in-out infinite forwards;
 }
 
-.top.left{
+.top.left {
     background-color: red;
 }
-.top.right{
+.top.right {
     background-color: green;
 }
-.side-1{
+.side-1 {
     background-color: blue;
 }
-.side-2{
+.side-2 {
     background-color: blue;
 }
 
-.bottom.left{
+.bottom.left {
     background-color: red;
 }
 
-.bottom.right{
+.bottom.right {
     background-color: green;
 }
 
-.hex-container-fixed{
+.hex-container-fixed {
     position: fixed;
     top: 10px;
     left: 500px;
 }
 
-.hexagon:hover{
+.hexagon:hover {
     transform: rotateY(360deg);
 }
 
 /*animations */
 @keyframes rotate-face {
-    0%{
-        transform: rotateY(0deg) rotateZ(0deg);
+    0% {
+        transform: rotateY(0deg);
     }
-    25%{
-        transform: rotateY(90deg) rotateZ(90deg);
+    25% {
+        transform: rotateY(360deg);
     }
-    75%{
-        transform: rotateY(90deg) rotateZ(180deg);
-
-    }
-    100%{
-        transform: rotateY(180deg) rotateZ(360deg);
+    100% {
+        transform: rotateY(0deg);
     }
 }
