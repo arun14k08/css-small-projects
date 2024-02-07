@@ -10,25 +10,29 @@ body {
     --primary-color: orangered;
     --background-color: white;
     --text-color: black;
+    --transistion-delay: 1s;
     --toggle-btn-text: var(--background-color);
+    --rotation:180deg;
     height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    border: 10px solid red;
     background-color: var(--background-color);
     color: var(--text-color);
+    font-family: "Courier New", Courier, monospace;
+    overflow: hidden;
+    transition: all var(--transistion-delay);
 }
 
-body > h1{
-    margin-bottom: 15px;
+body > h1 {
+    margin-bottom: 1rem;
 }
 
 body.dark {
     --background-color: #333;
     --text-color: white;
-    --primary-color:#D0D066;
+    --primary-color: #d0d066;
 }
 
 .theme-toggle-btn {
@@ -40,8 +44,49 @@ body.dark {
     color: var(--toggle-btn-text);
     border: none;
     outline: none;
+    transition: var(--transistion-delay);
+    font-size: 1.2rem;
+    transform: scale(1);
 }
 
 .toggle-icon {
     fill: var(--toggle-btn-text);
+    margin-right: 0.5rem;
+}
+
+.theme-toggle-btn:hover,
+.theme-toggle-btn:focus {
+    transform: scale(1.1);
+}
+
+.sun-moon-container {
+    position: absolute;
+    top: 0;
+    height: 200vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transistion-delay);
+}
+
+.sun,
+.moon {
+    position: absolute;
+    fill: var(--text-color);
+    transition: var(--transistion-delay);
+    width: 100px;
+    height: 100px;
+}
+
+.sun {
+    top: 2rem;
+}
+
+.moon {
+    bottom: 2rem;
+    transform: rotate(180deg);
+}
+
+.dark .sun-moon-container{
+    transform: rotate(var(--rotation));
 }
