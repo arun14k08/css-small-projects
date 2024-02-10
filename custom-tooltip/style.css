@@ -1,0 +1,65 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    --arrow-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #333;
+}
+
+.image {
+    width: 200px;
+    height: 200px;
+    background-image: url(./assets/dog-image.jpg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    position: relative;
+    border: 2px solid red;
+}
+
+.image::after,
+.image::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transition: 150ms ease-in-out;
+}
+
+.image::before {
+    content: attr(data-tooltip);
+    font-family: Arial, Helvetica, sans-serif;
+    width: max-content;
+    max-width: 150%;
+    font-size: 1.75rem;
+    padding: 0.25em;
+    border-radius: 5px;
+    background: #777;
+    transform: translateX(-50%) translateY(calc(-100% - var(--arrow-size)));
+    transform-origin: top left;
+    scale: 0;
+}
+
+.image:hover::after,
+.image:hover::before {
+    scale: 1;
+}
+
+.image::after {
+    content: "";
+    top: calc(var(--arrow-size) * -1);
+    border: var(--arrow-size) solid transparent;
+    border-top-color: #777;
+    transform: translateX(-50%);
+    scale: 0;
+    transform-origin: top left;
+}
